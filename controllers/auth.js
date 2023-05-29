@@ -1,5 +1,6 @@
 const Users = require('../models/users');
 const bcryptjs = require('bcryptjs');
+const Jwt = require('../helpers/jwt');
 
 class authsController {
 
@@ -23,7 +24,8 @@ class authsController {
     if (!bcryptjs.compareSync(document.password, users.password)) {
       throw new Error('Password not Matched !!!')
     }
-    return users
+    const token = Jwt.createJwt({id: users._id})
+    return token
   };
 
 };
