@@ -4,8 +4,13 @@ const express = require('express');
 const app = express();
 
 const middlerware = require('./helpers/middlerwares');
+const router = require('./routes');
 
 app.use(express.json());
+
+app.use(middlerware.AuthenticationMiddleware);
+
+app.use(router);
 
 // error handling middleware: 
 app.use(middlerware.ErrorHandlingMiddleware);
