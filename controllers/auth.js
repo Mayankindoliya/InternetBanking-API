@@ -25,6 +25,7 @@ class authsController {
       throw new Error('Password not Matched !!!')
     }
     const token = Jwt.createJwt({id: users._id})
+    console.log('Token created !!')
     return token
   };
 

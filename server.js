@@ -8,6 +8,8 @@ const router = require('./routes');
 
 app.use(express.json());
 
+app.use(middlerware.AuthenticationMiddleware);
+
 app.use(router);
 
 // error handling middleware: 
